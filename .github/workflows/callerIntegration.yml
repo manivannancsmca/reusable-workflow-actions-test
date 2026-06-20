@@ -7,6 +7,6 @@ on:
 jobs:
   run-linting:
     # Right way: Just call the file. Do not add "steps:" here.
-    uses: ./.github/workflows/reusable-build.yml
+    uses: ./.github/workflows/workflow_call.yml
     with:
       node-version: '20'
