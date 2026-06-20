@@ -9,6 +9,6 @@ on:
 jobs:
   # Call the reusable workflow
   run-linting:
-    uses: ./.github/workflows/reusable-build.yml
+    uses: ./.github/workflows/workflow_call.yml
     with:
       node-version: '22' # Passing the input parameter
