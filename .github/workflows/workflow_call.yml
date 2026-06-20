@@ -12,14 +12,16 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      # 1. THIS IS THE CRITICAL STEP YOU NEED
+      # 1. YOU MUST HAVE THIS EXACT STEP FIRST
       - name: Checkout repository code
         uses: actions/checkout@v4
 
+      # 2. Set up Node.js environment
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ inputs.node-version }}
 
+      # 3. Install and run your scripts
       - name: Install dependencies
         run: npm install
