@@ -3,12 +3,10 @@ name: Continuous Integration
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
-  # Call the reusable workflow
   run-linting:
-    uses: ./.github/workflows/workflow_call.yml
+    # Right way: Just call the file. Do not add "steps:" here.
+    uses: ./.github/workflows/reusable-build.yml
     with:
-      node-version: '22' # Passing the input parameter
+      node-version: '20'
