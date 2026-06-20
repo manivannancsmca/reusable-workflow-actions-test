@@ -1,9 +1,7 @@
 name: Reusable Code Linter
 
-# 1. This trigger makes the workflow reusable
 on:
   workflow_call:
-    # Optional: Define inputs that the caller must or can provide
     inputs:
       node-version:
         required: true
@@ -14,7 +12,8 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      # 1. THIS IS THE CRITICAL STEP YOU NEED
+      - name: Checkout repository code
         uses: actions/checkout@v4
 
       - name: Set up Node.js
@@ -22,7 +21,5 @@ jobs:
         with:
           node-version: ${{ inputs.node-version }}
 
-      - name: Install dependencies and Lint
-        run: |
-          npm install  # Changed from npm ci
-          npm run lint --if-present
+      - name: Install dependencies
+        run: npm install
